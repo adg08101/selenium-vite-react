@@ -2,6 +2,7 @@ package reactvite.github.io.adg08101.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import reactvite.github.io.adg08101.pages.base.BasePage;
 
 public class HomePage extends BasePage {
 
