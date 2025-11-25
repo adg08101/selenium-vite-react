@@ -16,4 +16,8 @@ public abstract class BasePage {
     public void openUrl(String url) {
         driver.get(url);
     }
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
 }
