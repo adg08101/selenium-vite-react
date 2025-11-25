@@ -1,6 +1,8 @@
-package reactvite.github.io.adg08101.pages;
+package reactvite.github.io.adg08101.pages.base;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
@@ -19,5 +21,14 @@ public abstract class BasePage {
 
     public String getUrl() {
         return driver.getCurrentUrl();
+    }
+
+    public void navigate(By by) {
+        WebElement element = driver.findElement(by);
+        element.click();
+    }
+
+    public void println(String message) {
+        System.out.println(message);
     }
 }

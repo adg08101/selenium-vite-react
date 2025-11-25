@@ -3,6 +3,7 @@ package reactvite.github.io.adg08101.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import reactvite.github.io.adg08101.pages.base.BasePage;
 
 import java.util.List;
 
@@ -20,13 +21,9 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void open() {
+    public void openAndNavigate() {
         openUrl("https://adg08101.github.io/react-vite");
-    }
-
-    public void navigate() {
-        WebElement link = driver.findElement(formLink);
-        link.click();
+        navigate(formLink);
     }
 
     public void enterUser(String user) {
