@@ -1,6 +1,5 @@
 package reactvite.github.io.adg08101.utils;
-import java.io.FileInputStream;
-import java.io.IOException;
+
 import java.util.Properties;
 
 public class ConfigReader {
@@ -9,11 +8,14 @@ public class ConfigReader {
 
     static {
         try {
-            FileInputStream file = new FileInputStream("./config.properties");
             properties = new Properties();
-            properties.load(file);
-        } catch (IOException e) {
-            throw new RuntimeException("Unable to load config.properties file!");
+            properties.load(
+                    ConfigReader.class
+                            .getClassLoader()
+                            .getResourceAsStream("config.properties")
+            );
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to load config.properties file!", e);
         }
     }
 
