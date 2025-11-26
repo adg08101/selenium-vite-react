@@ -19,41 +19,35 @@ public class WebDriverFactory {
         BrowserType browserType = BrowserType.valueOf(browser.toUpperCase());
 
         switch (browserType) {
-
-            case CHROME:
+            case CHROME -> {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-
                 if (ConfigReader.get("headless").equalsIgnoreCase("true")) {
                     chromeOptions.addArguments("--headless=new");
                 }
-
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--start-maximized");
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                chromeOptions.addArguments("--disable-popup-blocking");
                 return new ChromeDriver(chromeOptions);
-
-            case EDGE:
+            }
+            case EDGE -> {
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
-
                 if (ConfigReader.get("headless").equalsIgnoreCase("true")) {
                     edgeOptions.addArguments("--headless=new");
                 }
-
                 return new EdgeDriver(edgeOptions);
-
-            case FIREFOX:
+            }
+            case FIREFOX -> {
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions ffOptions = new FirefoxOptions();
-
                 if (ConfigReader.get("headless").equalsIgnoreCase("true")) {
                     ffOptions.addArguments("--headless");
                 }
-
                 return new FirefoxDriver(ffOptions);
-
-            default:
-                throw new RuntimeException("Invalid browser type: " + browser);
+            }
+            default -> throw new RuntimeException("Invalid browser type: " + browser);
         }
     }
 }

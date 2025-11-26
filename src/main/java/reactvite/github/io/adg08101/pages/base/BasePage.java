@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public abstract class BasePage {
     protected WebDriver driver;
-    protected WebDriverWait wait;
+    private final WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -28,7 +28,7 @@ public abstract class BasePage {
         element.click();
     }
 
-    public void println(String message) {
-        System.out.println(message);
+    public WebDriverWait getWait() {
+        return wait;
     }
 }
